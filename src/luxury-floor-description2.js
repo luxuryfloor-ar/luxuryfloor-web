@@ -14,7 +14,7 @@
     imgCarpetRender: 'https://d1a9qnv764bsoo.cloudfront.net/stores/006/464/401/rte/ea4b1b3a-d777-450f-9559-1a1da71c71e1.png',
     imgBefore: 'https://d1a9qnv764bsoo.cloudfront.net/stores/006/464/401/rte/c02ff150-406b-4a74-8eab-4f850d6cdfc8.jfif',
     imgAfter: 'https://d1a9qnv764bsoo.cloudfront.net/stores/006/464/401/rte/4ec5cf4e-f412-4f53-bb66-2814fb6960d1.jfif',
-    videoBaseUrl: 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@v1/src/media/luxury-',
+    videoBaseUrl: 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@dc7945eb4eba3759e30e1f5c40dd5a796cf685e6/src/media/luxury-',
     videoCount: 4,
 
     layers: [

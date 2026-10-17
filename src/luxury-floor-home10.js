@@ -64,8 +64,8 @@
     var waHref = getWhatsAppHref();
 
     /* ── CONFIGURAR ESTAS URLs con las imágenes subidas al CDN ── */
-    var IMG_BANNER_DESKTOP = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@v1/src/media/banner-desktop.jpg';
-    var IMG_BANNER_MOBILE  = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@v1/src/media/banner-desktop.jpg';
+    var IMG_BANNER_DESKTOP = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@dc7945eb4eba3759e30e1f5c40dd5a796cf685e6/src/media/banner-desktop.jpg';
+    var IMG_BANNER_MOBILE  = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@dc7945eb4eba3759e30e1f5c40dd5a796cf685e6/src/media/banner-desktop.jpg';
     /* ─────────────────────────────────────────────────────────── */
 
     var featCards = [
@@ -260,7 +260,7 @@
       '</a>' +
       '</div>' +
       '<div class="LFH-about-img-wrap LFH-reveal LFH-d1">' +
-      '<img class="LFH-about-img" src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@v1/src/media/nosotros.png" alt="Sobre Nosotros - Luxury Floor" loading="lazy">' +
+      '<img class="LFH-about-img" src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@dc7945eb4eba3759e30e1f5c40dd5a796cf685e6/src/media/nosotros.png" alt="Sobre Nosotros - Luxury Floor" loading="lazy">' +
       '</div>' +
       '</div>' +
       '</div>' +
