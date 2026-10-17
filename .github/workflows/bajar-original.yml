@@ -1,0 +1,26 @@
+name: Bajar código original
+on:
+  push:
+    paths: [".github/workflows/bajar-original.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar los 5 archivos desde el servidor anterior
+        run: |
+          mkdir -p original
+          for f in home10 home-social-proof2 product-card2 product-info2 description2; do
+            curl -fsSL --compressed -o "original/luxury-floor-$f.js" "https://hpanel.webcodebuilders.com/luxury/luxury-floor-$f.js"
+          done
+          ls -la original
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add original
+          git diff --cached --quiet || git commit -m "Copia del código original de la web (backup)"
+          git push
