@@ -808,7 +808,7 @@
               <i class="fa-solid fa-cart-shopping"></i> Agregar al Carrito
             </button>
             <p class="LFD-cta-guarantee">
-              <i class="fa-solid fa-shield-halved"></i> Garantía de satisfacción 30 días &nbsp;·&nbsp; Envío a todo el país
+              <i class="fa-solid fa-truck-fast"></i> Envío a todo el país &nbsp;·&nbsp; Atención por WhatsApp
             </p>
           </div>
         </div>

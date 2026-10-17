@@ -448,7 +448,7 @@
 /* Luxury Floor: el "+1500 clientes satisfechos" del inicio lleva a los videos de clientes */
 (function () {
   var st = document.createElement('style');
-  st.textContent = 'a.LFH-badge{cursor:pointer;text-decoration:none;color:inherit}a.LFH-badge:hover{filter:brightness(1.15)}';
+  st.textContent = 'a.LFH-badge{cursor:pointer;text-decoration:none;color:inherit}a.LFH-badge:hover{filter:brightness(1.15)}#LFSP-videos{scroll-margin-top:80px}';
   document.head.appendChild(st);
   document.addEventListener('click', function (e) {
     var badge = e.target.closest && e.target.closest('.LFH-badge');
