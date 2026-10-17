@@ -1,4 +1,4 @@
-name: Bajar código original
+name: Bajar código y archivos originales
 on:
   push:
     paths: [".github/workflows/bajar-original.yml"]
@@ -10,17 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Descargar los 5 archivos desde el servidor anterior
+      - name: Descargar código y archivos desde el servidor anterior
         run: |
-          mkdir -p original
+          B=https://hpanel.webcodebuilders.com/luxury
+          mkdir -p original assets
           for f in home10 home-social-proof2 product-card2 product-info2 description2; do
-            curl -fsSL --compressed -o "original/luxury-floor-$f.js" "https://hpanel.webcodebuilders.com/luxury/luxury-floor-$f.js"
+            curl -fsSL --compressed -o "original/luxury-floor-$f.js" "$B/luxury-floor-$f.js"
           done
-          ls -la original
+          for f in banner-desktop.jfif nosotros.png \
+                   cliente1.mp4 cliente2.mp4 cliente3.mp4 cliente4.mp4 cliente5.mp4 \
+                   luxury-1.mp4 luxury-2.mp4 luxury-3.mp4 luxury-4.mp4 \
+                   testimonio1.jfif testimonio2.jfif testimonio3.jfif testimonio4.jfif \
+                   testimonio5.jfif testimonio6.jfif testimonio7.jfif testimonio8.jfif; do
+            curl -fsSL -o "assets/$f" "$B/$f" || echo "FALTA $f"
+          done
+          ls -la original assets
       - name: Guardar en el repositorio
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add original
-          git diff --cached --quiet || git commit -m "Copia del código original de la web (backup)"
+          git add original assets
+          git diff --cached --quiet || git commit -m "Copia de imágenes y videos del servidor anterior (backup)"
           git push
