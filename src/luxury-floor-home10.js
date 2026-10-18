@@ -101,7 +101,7 @@
       '<span class="LFH-hero-title-mobile">PROTECCION\nPREMIUM\nPARA TU AUTO</span>' +
       '</h1>' +
       '<p class="LFH-hero-desc LFH-reveal LFH-d2">' +
-      '<span class="LFH-hero-desc-desktop">Calce milimetrico por modelo con escaneo laser 3D y 100% impermeables. La alfombra que tu auto merece.</span>' +
+      '<span class="LFH-hero-desc-desktop">Calce milimétrico para cada modelo y 100% impermeables. La alfombra que tu auto merece.</span>' +
       '<span class="LFH-hero-desc-mobile">Alfombras a medida, 100% impermeables.</span>' +
       '</p>' +
       '<div class="LFH-hero-btns LFH-reveal LFH-d3">' +
@@ -254,7 +254,7 @@
       '<div class="LFH-about-text LFH-reveal">' +
       '<div class="LFH-gold-line"></div>' +
       '<h2 class="LFH-about-title">SOMOS FANATICOS DEL DETALLE</h2>' +
-      '<p class="LFH-about-desc">En Luxury Floor disenamos alfombras 3D a medida para cada modelo de auto. Combinamos tecnologia de escaneo laser con materiales de uso profesional para ofrecerte el mejor ajuste, la mejor proteccion y el mejor resultado. Cada producto sale de nuestras manos con el estandar mas alto porque sabemos que tu auto se lo merece.</p>' +
+      '<p class="LFH-about-desc">En Luxury Floor fabricamos alfombras a medida para cada modelo de auto. Tomamos las medidas exactas de cada vehículo y usamos materiales de uso profesional para ofrecerte el mejor ajuste, la mejor proteccion y el mejor resultado. Cada producto sale de nuestras manos con el estandar mas alto porque sabemos que tu auto se lo merece.</p>' +
       '<a href="https://www.instagram.com/reels/DUa6HzajWKS/" id="LFH-know-us-btn" class="LFH-btn-secondary">' +
       'Conocenos <i class="fa-solid fa-arrow-right"></i>' +
       '</a>' +

@@ -17,10 +17,10 @@
     rating:      4.9,
     reviewCount: 127,
     cuotas:      3,
-    gocuotasCuotas: 0, // poner 2, 3 o 4 cuando se confirme en el panel de GOcuotas
+    gocuotasCuotas: 4, // GOcuotas permite hasta 4 cuotas con débito
     whatsappNumber: '5491132058419',
     whatsappText:   'Hola! Me interesa recibir atención personalizada sobre uno de sus productos.',
-    transferDiscount: 0,
+    transferDiscount: 5,
     imgTruck:  'https://d1a9qnv764bsoo.cloudfront.net/stores/006/464/401/rte/93.png',
     imgReview: 'https://d1a9qnv764bsoo.cloudfront.net/stores/006/464/401/rte/94.png',
     price: 0, originalPrice: 0, discount: 0,
@@ -39,7 +39,7 @@
       {
         icon: 'fa-solid fa-microchip',
         title: 'Ingeniería en cada detalle',
-        content: 'Cada alfombra Luxury Floor es el resultado de un proceso de ingeniería preciso: escaneamos cada modelo de vehículo con tecnología láser 3D para obtener las medidas exactas del piso. El resultado es un calce milimétrico que cubre cada rincón, sin espacios ni solapamientos. Los bordes están termoformados y sellados para evitar que la suciedad se acumule debajo.'
+        content: 'Cada alfombra Luxury Floor es el resultado de un proceso de ingeniería preciso: tomamos las medidas exactas del piso de cada modelo de vehículo y con ellas fabricamos la alfombra. El resultado es un calce milimétrico que cubre cada rincón, sin espacios ni solapamientos. Los bordes están termoformados y sellados para evitar que la suciedad se acumule debajo.'
       },
       {
         icon: 'fa-solid fa-images',
@@ -66,10 +66,10 @@
     ],
 
     faqs: [
-      { icon: 'fa-solid fa-ruler-combined', question: '¿Cómo garantizan el calce?',          answer: 'Usamos escaneo láser 3D de cada modelo de vehículo para lograr un ajuste milimétrico. Cada alfombra está diseñada exclusivamente para tu auto, no es genérica.' },
+      { icon: 'fa-solid fa-ruler-combined', question: '¿Cómo garantizan el calce?',          answer: 'Cada alfombra se fabrica con las medidas exactas del piso de tu modelo. Está hecha exclusivamente para tu auto, no es genérica.' },
       { icon: 'fa-solid fa-droplet',        question: '¿Qué pasa si se derrama un líquido?', answer: 'La superficie 100% impermeable contiene el líquido sin filtrarse. Simplemente retirá la alfombra, volcá el líquido y limpiala con un paño húmedo.' },
       { icon: 'fa-solid fa-truck-fast',     question: '¿Cuánto demora el envío?',            answer: 'Enviamos a todo el país. CABA y GBA: 24 a 48hs. Interior: 3 a 5 días hábiles. Todos los envíos incluyen seguimiento en tiempo real.' },
-      { icon: 'fa-solid fa-credit-card',    question: '¿Puedo pagar en cuotas?',             answer: 'Sí. Con tarjeta de débito pagás en cuotas sin interés con GOcuotas. Con tarjeta de crédito pagás en cuotas con Mercado Pago: el interés lo ves antes de confirmar el pago. Por transferencia o en efectivo pagás el precio de contado.' }
+      { icon: 'fa-solid fa-credit-card',    question: '¿Puedo pagar en cuotas?',             answer: 'Sí. Con tarjeta de débito pagás hasta 4 cuotas sin interés con GOcuotas. Con tarjeta de crédito pagás en cuotas: el interés lo ves antes de confirmar el pago. Si pagás por transferencia tenés 5% de descuento.' }
     ],
 
     selectors: {
@@ -364,6 +364,7 @@
       .LF-pb-row-label { font-size: 11px; font-weight: 600; margin-bottom: 2px; }
       .LF-pb-row--cuotas .LF-pb-row-label { color: #777; }
       .LF-pb-row--transfer .LF-pb-row-label { color: #86efac; }
+      .LF-pb-row-note { font-size: 12px; color: #9CA3AF; margin-top: 2px; }
       .LF-pb-row-val { font-size: 18px; font-weight: 800; line-height: 1.2; }
       .LF-pb-row--cuotas .LF-pb-row-val { color: ${td}; }
       .LF-pb-row--transfer .LF-pb-row-val { color: #4ade80; font-size: 34px; letter-spacing: -0.5px; }
@@ -610,14 +611,14 @@
           <span class="LF-premium-badge">PREMIUM</span>
         </div>
 
-        <p class="LF-subtitle">Diseñadas con escaneo laser 3D para un calce milimétrico — ajuste perfecto garantizado para tu modelo.</p>
+        <p class="LF-subtitle">Hechas a medida de tu modelo: calce milimétrico y 100% impermeables.</p>
 
         <div class="LF-benefit-cards">
           <div class="LF-benefit-card">
             <img class="LF-benefit-card-img" src="${CONFIG.imgReview}" alt="Hecha para tu modelo">
             <div>
               <div class="LF-benefit-card-title">Hecha para tu modelo</div>
-              <div class="LF-benefit-card-desc">Diseño con escaneo láser 3D para un calce exacto.</div>
+              <div class="LF-benefit-card-desc">Fabricada con las medidas de tu auto para un calce exacto.</div>
             </div>
           </div>
           <div class="LF-benefit-card">
@@ -633,8 +634,9 @@
           <div class="LF-pb-row LF-pb-row--transfer">
             <div class="LF-pb-row-icon"><i class="fa-solid fa-building-columns"></i></div>
             <div class="LF-pb-row-content">
-              <div class="LF-pb-row-label">Precio de contado · transferencia o efectivo</div>
+              <div class="LF-pb-row-label">Pagando por transferencia · 5% OFF</div>
               <div class="LF-pb-row-val" id="LF-pb-transfer-val">${transferVal}</div>
+              <div class="LF-pb-row-note">${price > 0 ? 'Precio de lista ' + formatPrice(price) : ''}</div>
             </div>
           </div>
           <div class="LF-pb-row LF-pb-row--cuotas">

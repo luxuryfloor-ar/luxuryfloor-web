@@ -39,7 +39,7 @@
     ],
 
     specs: [
-      { icon: 'fa-solid fa-ruler-combined', title: 'Calce Milimétrico', desc: 'Escaneo láser 3D por modelo' },
+      { icon: 'fa-solid fa-ruler-combined', title: 'Calce Milimétrico', desc: 'Hecha a medida de tu modelo' },
       { icon: 'fa-solid fa-layer-group', title: '3 Capas', desc: 'PVC + EVA + Velcro' },
       { icon: 'fa-solid fa-weight-hanging', title: 'Alta Densidad', desc: 'Material de uso profesional' },
       { icon: 'fa-solid fa-palette', title: 'Negro Premium', desc: 'Color sólido, sin desteñir' },
@@ -67,7 +67,7 @@
     ],
 
     compareRows: [
-      { feature: 'Calce en el vehículo', bad: 'Puede no encajar — genérica', good: 'Ajuste láser 3D por modelo' },
+      { feature: 'Calce en el vehículo', bad: 'Puede no encajar — genérica', good: 'Hecha a medida de tu modelo' },
       { feature: 'Impermeabilidad', bad: 'Absorbe líquidos y mancha', good: 'PVC 100% impermeable' },
       { feature: 'Fijación', bad: 'Se mueve al frenar o acelerar', good: 'Clips + base de velcro' },
       { feature: 'Limpieza', bad: 'Requiere cepillo y detergente', good: 'Paño húmedo en 10 segundos' },
@@ -658,7 +658,7 @@
         <div class="LFD-inner">
           <div class="LFD-gold-line LFD-reveal"></div>
           <h2 class="LFD-sec-title LFD-reveal LFD-reveal-d1">La diferencia es inmediata</h2>
-          <p class="LFD-sec-sub LFD-reveal LFD-reveal-d2">Arrastrá el divisor para comparar el interior con y sin Luxury Floor 3D.</p>
+          <p class="LFD-sec-sub LFD-reveal LFD-reveal-d2">Arrastrá el divisor para comparar el interior con y sin Luxury Floor.</p>
           <div class="LFD-reveal LFD-reveal-d3">
             <div class="LFD-ba-wrap">
               <div class="LFD-ba-container" id="LFD-ba">
@@ -744,7 +744,7 @@
       <section class="LFD-section">
         <div class="LFD-inner">
           <div class="LFD-gold-line LFD-reveal"></div>
-          <h2 class="LFD-sec-title LFD-reveal LFD-reveal-d1">¿Por qué Luxury Floor 3D?</h2>
+          <h2 class="LFD-sec-title LFD-reveal LFD-reveal-d1">¿Por qué Luxury Floor?</h2>
           <p class="LFD-sec-sub LFD-reveal LFD-reveal-d2">La diferencia no es de precio — es de ingeniería.</p>
           <div class="LFD-compare-wrap LFD-reveal LFD-reveal-d3">
             <table class="LFD-compare-table">
@@ -752,7 +752,7 @@
                 <tr>
                   <th></th>
                   <th class="LFD-th-bad">Alfombra genérica</th>
-                  <th class="LFD-th-good">Luxury Floor 3D</th>
+                  <th class="LFD-th-good">Luxury Floor</th>
                 </tr>
               </thead>
               <tbody>
@@ -772,13 +772,13 @@
 
   function buildFinalCTA() {
     const { price, originalPrice, discount } = getDynamicPrices();
-    const transferPrice = price > 0 ? Math.round(price) : 0;
+    const transferPrice = price > 0 ? Math.round(price * 0.95) : 0;
 
     const transferHeroHtml = price > 0
       ? `<div class="LFD-cta-transfer-hero">
-           <div class="LFD-cta-transfer-label"><i class="fa-solid fa-building-columns"></i> Precio de contado</div>
+           <div class="LFD-cta-transfer-label"><i class="fa-solid fa-building-columns"></i> Pagando por transferencia</div>
            <div class="LFD-cta-transfer-price">${formatPrice(transferPrice)}</div>
-           <div class="LFD-cta-transfer-sub">Transferencia o efectivo</div>
+           <div class="LFD-cta-transfer-sub">5% OFF · Precio de lista ${formatPrice(price)}</div>
          </div>
          <div class="LFD-cta-list-row">
            <span class="LFD-cta-list-label">Precio de lista:</span>
@@ -965,12 +965,12 @@
     if (!block || !document.getElementById('LFD-cta-price-loading')) return;
     const { price, originalPrice } = getDynamicPrices();
     if (price <= 0) return;
-    const transferPrice = Math.round(price);
+    const transferPrice = Math.round(price * 0.95);
     block.innerHTML = `
       <div class="LFD-cta-transfer-hero">
-        <div class="LFD-cta-transfer-label"><i class="fa-solid fa-building-columns"></i> Precio de contado</div>
+        <div class="LFD-cta-transfer-label"><i class="fa-solid fa-building-columns"></i> Pagando por transferencia</div>
         <div class="LFD-cta-transfer-price">${formatPrice(transferPrice)}</div>
-        <div class="LFD-cta-transfer-sub">Transferencia o efectivo</div>
+        <div class="LFD-cta-transfer-sub">5% OFF · Precio de lista ${formatPrice(price)}</div>
       </div>
       <div class="LFD-cta-list-row">
         <span class="LFD-cta-list-label">Precio de lista:</span>

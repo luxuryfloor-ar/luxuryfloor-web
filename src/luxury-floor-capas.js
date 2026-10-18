@@ -15,6 +15,7 @@
     '#LFL .LFL-in{width:100%;max-width:1200px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center}' +
     '#LFL .LFL-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C8A951;margin:0 0 10px}' +
     '#LFL h2{margin:0 0 18px;font-size:clamp(22px,3.2vw,36px);font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:-.5px;color:#F0F0F0}' +
+    '#LFL .LFL-lead{margin:-6px 0 22px;max-width:30em;font-size:14px;line-height:1.55;color:#A89F8F}' +
     '#LFL .LFL-steps{display:grid}' +
     '#LFL .LFL-step{grid-area:1/1;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s,visibility 0s .5s;visibility:hidden}' +
     '#LFL .LFL-step.on{opacity:1;transform:none;visibility:visible;transition:opacity .5s,transform .5s}' +
@@ -24,8 +25,8 @@
     '#LFL .LFL-stack li{padding:7px 12px;border:1px solid rgba(200,169,81,.24);border-radius:8px;color:#A89F8F;font-size:13px;transition:background .4s,color .4s,border-color .4s}' +
     '#LFL .LFL-stack li.on{background:rgba(200,169,81,.16);border-color:#C8A951;color:#E6C978}' +
     '#LFL .LFL-view{position:relative;aspect-ratio:1456/1088;border-radius:20px;overflow:hidden;background:#d4d4d4;box-shadow:0 30px 80px rgba(0,0,0,.55)}' +
-    '#LFL .LFL-pan{position:relative;width:100%;height:100%;transform-origin:0 0;will-change:transform}' +
-    '#LFL .LFL-ly{position:absolute;inset:0;width:100%;height:100%;max-width:none;will-change:transform,opacity}' +
+    '#LFL .LFL-pan{position:relative;width:100%;height:100%;transform-origin:0 0;will-change:transform;backface-visibility:hidden}' +
+    '#LFL .LFL-ly{position:absolute;inset:0;width:100%;height:100%;max-width:none;will-change:transform,opacity;backface-visibility:hidden}' +
     '#LFL .LFL-track{height:calc(100vh + 7 * 70vh);height:calc(100svh + 7 * 70svh)}' +
     '#LFL .LFL-stage{position:sticky;top:var(--lfl-top);height:calc(100vh - var(--lfl-top));height:calc(100svh - var(--lfl-top));display:flex;align-items:center}' +
     '@media (max-width:820px){' +
@@ -35,6 +36,7 @@
       '#LFL .LFL-eyebrow{display:none}' +
       '#LFL .LFL-stack{flex-direction:row;flex-wrap:wrap;width:auto;margin-top:12px}' +
       '#LFL .LFL-step p{font-size:14px}' +
+      '#LFL .LFL-lead{margin:-2px 0 12px;font-size:13px}' +
       '#LFL .LFL-track{height:calc(100vh + 6 * 60vh);height:calc(100svh + 6 * 60svh)}' +
     '}' +
     '@media (prefers-reduced-motion:reduce){#LFL .LFL-track{height:auto}#LFL .LFL-stage{position:static;height:auto}#LFL *{transition:none!important}}';
@@ -47,6 +49,7 @@
             '<div class="LFL-copy">' +
               '<span class="LFL-eyebrow">Por dentro</span>' +
               '<h2>Así está hecha por dentro</h2>' +
+              '<p class="LFL-lead">Escaneamos la plataforma de cada vehículo y con esas medidas mandamos a fabricar tu alfombra. Por eso calza justo en tu modelo.</p>' +
               '<div class="LFL-steps">' +
                 '<article class="LFL-step on"><h3>Tres capas</h3><p>Cada una cumple un trabajo distinto. Seguí bajando y la abrimos de a una.</p></article>' +
                 '<article class="LFL-step"><h3>Arriba, PVC con relieve</h3><p>Es la cara que ves y pisás. Tiene la textura en relieve y una chapa de metal en el apoyapiés del conductor.</p></article>' +
@@ -105,21 +108,26 @@
     }
   }
 
-  /* Altura del encabezado fijo de la tienda, para que la escena no quede tapada */
+  /* Altura del encabezado fijo de la tienda, para que la escena no quede tapada.
+     Se busca una sola vez y después solo se mide (es barato). */
+  var headEls = null;
   function headerOffset() {
+    if (!headEls) {
+      headEls = [].slice.call(document.querySelectorAll('header, .js-head-main, .head-main, [data-store="head"]')).filter(function (h) {
+        var p = getComputedStyle(h).position; return p === 'fixed' || p === 'sticky';
+      });
+    }
     var best = 0;
-    document.querySelectorAll('header, .js-head-main, .head-main, [data-store="head"]').forEach(function (h) {
-      var cs = getComputedStyle(h);
-      if (cs.position === 'fixed' || cs.position === 'sticky') {
-        var r = h.getBoundingClientRect();
-        if (r.top <= 1 && r.bottom > best && r.bottom < window.innerHeight * 0.4) best = r.bottom;
-      }
-    });
+    for (var i = 0; i < headEls.length; i++) {
+      var r = headEls[i].getBoundingClientRect();
+      if (r.top <= 1 && r.bottom > best && r.bottom < window.innerHeight * 0.4) best = r.bottom;
+    }
     return Math.round(best);
   }
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-  function ease(t) { return t * t * (3 - 2 * t); }
+  /* curva suave: arranca y frena despacio */
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
 
   function setup(root) {
     var track = root.querySelector('#LFL-track'), view = root.querySelector('#LFL-view'), pan = root.querySelector('#LFL-pan'),
@@ -141,9 +149,9 @@
       var o = a[1] + (b[1] - a[1]) * t, cx = a[2] + (b[2] - a[2]) * t, cy = a[3] + (b[3] - a[3]) * t, s = a[4] + (b[4] - a[4]) * t;
       var W = view.clientWidth, H = view.clientHeight;
       var tx = clamp(W / 2 - s * cx * W, W - s * W, 0), ty = clamp(H / 2 - s * cy * H, H - s * H, 0);
-      pan.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
-      lyTop.style.transform = 'translateY(' + ((1 - o) * DTOP / IH * 100).toFixed(3) + '%)';
-      lyBase.style.transform = 'translateY(' + ((1 - o) * DBASE / IH * 100).toFixed(3) + '%)';
+      pan.style.transform = 'translate3d(' + tx.toFixed(2) + 'px,' + ty.toFixed(2) + 'px,0) scale(' + s.toFixed(4) + ')';
+      lyTop.style.transform = 'translate3d(0,' + ((1 - o) * DTOP / IH * 100).toFixed(3) + '%,0)';
+      lyBase.style.transform = 'translate3d(0,' + ((1 - o) * DBASE / IH * 100).toFixed(3) + '%,0)';
       lyEva.style.opacity = clamp((o - .1) / .4, 0, 1).toFixed(3);
       var k = 0; while (p >= S[k][0]) k++;
       if (k !== cur) {
@@ -155,18 +163,28 @@
 
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { render(0.42); return; }
 
-    var tick = false, lastT = -1;
-    function onScroll() {
-      if (tick) return; tick = true;
-      requestAnimationFrame(function () {
-        tick = false;
-        var T = headerOffset();
-        if (T !== lastT) { lastT = T; root.style.setProperty('--lfl-top', T + 'px'); }
-        var r = track.getBoundingClientRect(), total = track.offsetHeight - (window.innerHeight - T);
-        render(total > 0 ? clamp((T - r.top) / total, 0, 1) : 0);
-      });
+    /* La escena no salta con cada movimiento del scroll: la posición mostrada
+       "persigue" a la del scroll con una inercia corta, así se ve fluida
+       también con la rueda del mouse o el dedo en el celular. */
+    var lastT = -1, target = 0, shown = -1, raf = 0;
+    function measure() {
+      var T = headerOffset();
+      if (T !== lastT) { lastT = T; root.style.setProperty('--lfl-top', T + 'px'); }
+      var r = track.getBoundingClientRect(), total = track.offsetHeight - (window.innerHeight - T);
+      target = total > 0 ? clamp((T - r.top) / total, 0, 1) : 0;
     }
-    function onResize() { lastT = -1; onScroll(); }
+    function loop() {
+      raf = 0;
+      if (shown < 0) shown = target;
+      var d = target - shown;
+      shown = Math.abs(d) < 0.0004 ? target : shown + d * 0.14;
+      render(shown);
+      if (shown !== target) raf = requestAnimationFrame(loop);
+    }
+    function onScroll() {
+      measure();
+      if (!raf) raf = requestAnimationFrame(loop);
+    }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
     onResize();

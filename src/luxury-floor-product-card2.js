@@ -136,11 +136,6 @@
         text-decoration: line-through !important;
       }
 
-      /* Precio nativo oculto cuando ya está el bloque verde (evita precio repetido) */
-      .js-item-product .item-price-container:has(+ .LFC-transfer) {
-        display: none !important;
-      }
-
       /* Ocultar bloque nativo de transferencia e installments */
       .js-item-product .payment-discount-price-product-container {
         display: none !important;
@@ -363,14 +358,14 @@
     if (discountEl) {
       const raw = parseInt(discountEl.getAttribute('data-priceraw-without-shipping') || '0', 10);
       if (raw > 0) {
-        return { text: formatARS(Math.round(originalCents / 100)), pct: 0 };
+        return { text: formatARS(Math.round(originalCents / 100 * 0.95)), pct: 5 };
       }
     }
 
     if (originalCents > 0) {
       return {
-        text: formatARS(Math.round(originalCents / 100)),
-        pct: 0
+        text: formatARS(Math.round(originalCents / 100 * 0.95)),
+        pct: 5
       };
     }
 
@@ -382,7 +377,7 @@
      Crédito: lo que diga Tienda Nube para 3 cuotas de Mercado Pago
      (si tiene interés muestra el valor con interés).
      GOCUOTAS_CUOTAS: poner 2, 3 o 4 cuando se confirme en el panel de GOcuotas. */
-  var GOCUOTAS_CUOTAS = 0;
+  var GOCUOTAS_CUOTAS = 4;
 
   function getCreditInstallment(card) {
     try {
@@ -477,7 +472,7 @@
     banner.innerHTML =
       '<div class="LFC-t-header">' +
         '<i class="fa-solid fa-building-columns LFC-t-icon"></i>' +
-        '<span class="LFC-t-label-text">Precio de contado</span>' +
+        '<span class="LFC-t-label-text">Por transferencia</span>' +
       '</div>' +
       '<div class="LFC-t-price-row">' +
         '<span class="LFC-t-price">' + transferInfo.text + '</span>' +

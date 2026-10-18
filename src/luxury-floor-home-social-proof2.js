@@ -416,7 +416,7 @@
                   <div class="LFSP-vfeat-icon"><i class="fa-solid fa-ruler-combined"></i></div>
                   <div>
                     <div class="LFSP-vfeat-title">Calce milimétrico verificado</div>
-                    <div class="LFSP-vfeat-desc">Escaneo láser 3D por modelo. Cada alfombra diseñada exclusivamente para tu vehículo.</div>
+                    <div class="LFSP-vfeat-desc">Hecha a medida de cada modelo. Cada alfombra diseñada exclusivamente para tu vehículo.</div>
                   </div>
                 </div>
                 <div class="LFSP-vfeat">
