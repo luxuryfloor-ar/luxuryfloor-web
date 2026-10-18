@@ -550,7 +550,7 @@
 
     const transferVal = price > 0 ? formatPrice(transferPrice) : '—';
     const cuotasVal   = price > 0 ? creditVal(price) : '—';
-    const debitoVal   = (CONFIG.gocuotasCuotas > 1 && price > 0) ? CONFIG.gocuotasCuotas + ' × ' + formatPrice(price / CONFIG.gocuotasCuotas) : 'Sin interés';
+    const debitoVal   = (CONFIG.gocuotasCuotas > 1 && price > 0) ? 'Hasta ' + CONFIG.gocuotasCuotas + ' × ' + formatPrice(price / CONFIG.gocuotasCuotas) + ' sin interés' : 'Sin interés';
 
     const priceRowInner = price > 0
       ? `<div class="LF-pb-main-icon"><i class="fa-solid fa-tag"></i></div>

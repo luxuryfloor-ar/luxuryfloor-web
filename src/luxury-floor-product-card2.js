@@ -394,7 +394,7 @@
     var pe = card.querySelector('[data-product-price]');
     var price = pe ? parseInt(pe.getAttribute('data-product-price') || '0', 10) / 100 : 0;
     var deb = (GOCUOTAS_CUOTAS > 1 && price > 0)
-      ? 'Débito: ' + GOCUOTAS_CUOTAS + ' × <strong>' + formatARS(Math.round(price / GOCUOTAS_CUOTAS)) + '</strong> sin interés'
+      ? 'Débito: hasta ' + GOCUOTAS_CUOTAS + ' × <strong>' + formatARS(Math.round(price / GOCUOTAS_CUOTAS)) + '</strong> sin interés'
       : 'Débito: cuotas sin interés con <strong>GOcuotas</strong>';
     var cr = getCreditInstallment(card);
     var cred = cr
