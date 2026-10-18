@@ -155,16 +155,18 @@
 
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { render(0.42); return; }
 
-    var tick = false;
+    var tick = false, lastT = -1;
     function onScroll() {
       if (tick) return; tick = true;
       requestAnimationFrame(function () {
         tick = false;
-        var r = track.getBoundingClientRect(), total = track.offsetHeight - (window.innerHeight - headerOffset());
-        render(total > 0 ? clamp((headerOffset() - r.top) / total, 0, 1) : 0);
+        var T = headerOffset();
+        if (T !== lastT) { lastT = T; root.style.setProperty('--lfl-top', T + 'px'); }
+        var r = track.getBoundingClientRect(), total = track.offsetHeight - (window.innerHeight - T);
+        render(total > 0 ? clamp((T - r.top) / total, 0, 1) : 0);
       });
     }
-    function onResize() { root.style.setProperty('--lfl-top', headerOffset() + 'px'); onScroll(); }
+    function onResize() { lastT = -1; onScroll(); }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
     onResize();
