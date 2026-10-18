@@ -9,9 +9,20 @@
 
   var IMG = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@eeb3aff3241117fce4be3914ed43d7adaaea9137/src/media/capas/';
 
+  var IMG2 = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@a54790e04a357cf3443e0f876a0c20f37886bff7/src/media/capas/';
+
   var CSS = '' +
     '#LFL{--lfl-top:0px;background:linear-gradient(180deg,#000,#100e0b 50%,#000);color:#F0F0F0;font-family:inherit;position:relative;z-index:1}' +
     '#LFL *{box-sizing:border-box}' +
+    '#LFL .LFL-intro{max-width:1100px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px clamp(8px,2vw,24px);text-align:center}' +
+    '#LFL .LFL-intro .LFL-eyebrow{margin-bottom:12px}' +
+    '#LFL .LFL-intro h2{margin:0 auto 10px;max-width:16em}' +
+    '#LFL .LFL-intro-sub{margin:0 auto 28px;max-width:34em;font-size:15px;line-height:1.6;color:#A89F8F}' +
+    '#LFL .LFL-fig{position:relative;margin:0 auto;max-width:900px;border-radius:24px;overflow:hidden;background:#ececec;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(200,169,81,.18)}' +
+    '#LFL .LFL-fig img{display:block;width:100%;height:auto;max-width:none}' +
+    '#LFL .LFL-legend{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none}' +
+    '#LFL .LFL-legend li{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border:1px solid rgba(200,169,81,.28);border-radius:999px;font-size:14px;color:#E9E3D6;background:rgba(200,169,81,.06)}' +
+    '#LFL .LFL-legend b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#C8A951;color:#111;font-size:12px;font-weight:800}' +
     '#LFL .LFL-in{width:100%;max-width:1200px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center}' +
     '#LFL .LFL-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C8A951;margin:0 0 10px}' +
     '#LFL h2{margin:0 0 18px;font-size:clamp(22px,3.2vw,36px);font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:-.5px;color:#F0F0F0}' +
@@ -31,6 +42,10 @@
     '#LFL .LFL-stage{position:sticky;top:var(--lfl-top);height:calc(100vh - var(--lfl-top));height:calc(100svh - var(--lfl-top));display:flex;align-items:center}' +
     '@media (max-width:820px){' +
       '#LFL .LFL-in{grid-template-columns:minmax(0,1fr);gap:14px;padding:12px 16px}' +
+      '#LFL .LFL-intro{padding:40px 16px 4px}' +
+      '#LFL .LFL-fig{border-radius:16px}' +
+      '#LFL .LFL-legend{gap:8px}' +
+      '#LFL .LFL-legend li{font-size:13px;padding:6px 12px 6px 6px}' +
       '#LFL .LFL-view{order:-1;border-radius:14px}' +
       '#LFL h2{margin-bottom:10px;font-size:22px}' +
       '#LFL .LFL-eyebrow{display:none}' +
@@ -43,6 +58,13 @@
 
   var HTML = '' +
     '<section id="LFL" aria-label="Cómo está hecha la alfombra">' +
+      '<div class="LFL-intro">' +
+        '<span class="LFL-eyebrow">Por dentro</span>' +
+        '<h2>Tres capas, una sola alfombra</h2>' +
+        '<p class="LFL-intro-sub">Cada capa cumple un trabajo distinto. Bajá y mirá cómo se abre.</p>' +
+        '<figure class="LFL-fig"><img src="' + IMG2 + 'capas-ilustracion.webp" alt="Ilustración de las tres capas de la alfombra: PVC con chapa de metal arriba, goma EVA en el medio y base de velcro abajo" width="1456" height="1088" loading="lazy" decoding="async"></figure>' +
+        '<ol class="LFL-legend"><li><b>1</b>PVC con relieve</li><li><b>2</b>Goma EVA</li><li><b>3</b>Base de velcro</li></ol>' +
+      '</div>' +
       '<div class="LFL-track" id="LFL-track">' +
         '<div class="LFL-stage">' +
           '<div class="LFL-in">' +

@@ -44,7 +44,7 @@
       {
         icon: 'fa-solid fa-images',
         title: 'Antes y Después',
-        content: 'La diferencia es inmediata. Antes: tapizados genéricos que se desplazan, no cubren bien los bordes y se manchan con facilidad. Después: tu auto con alfombras que parecen de fábrica, con un interior limpio, protegido y de nivel premium. Más de 1500 clientes ya tienen su Luxury Floor — el tuyo puede ser el siguiente.'
+        content: 'Mirá lo que es el cambio. Antes: tapizados genéricos que se desplazan, no cubren bien los bordes y se manchan con facilidad. Después: tu auto con alfombras que parecen de fábrica, con un interior limpio, protegido y de nivel premium. Más de 1500 clientes ya tienen su Luxury Floor — el tuyo puede ser el siguiente.'
       },
       {
         icon: 'fa-solid fa-users',

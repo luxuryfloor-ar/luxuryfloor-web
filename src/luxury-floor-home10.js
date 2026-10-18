@@ -92,17 +92,15 @@
       '<div class="LFH-hero-left">' +
       '<div class="LFH-hero-text">' +
       '<div class="LFH-hero-eyebrow-wrap LFH-reveal">' +
-      '<span class="LFH-eyebrow LFH-eyebrow-desktop">Alfombras Termoformadas a Medida para Autos</span>' +
-      '<span class="LFH-eyebrow LFH-eyebrow-mobile">Alfombras a Medida</span>' +
       '<a class="LFH-badge" href="#LFSP-videos" title="Ver videos de clientes">+1500 clientes satisfechos</a>' +
       '</div>' +
       '<h1 class="LFH-hero-title LFH-reveal LFH-d1">' +
-      '<span class="LFH-hero-title-desktop">PROTECCION\nPREMIUM\nPARA TU AUTO</span>' +
-      '<span class="LFH-hero-title-mobile">PROTECCION\nPREMIUM\nPARA TU AUTO</span>' +
+      '<span class="LFH-hero-title-desktop">ALFOMBRAS\nTERMOFORMADAS</span>' +
+      '<span class="LFH-hero-title-mobile">ALFOMBRAS\nTERMOFORMADAS</span>' +
       '</h1>' +
       '<p class="LFH-hero-desc LFH-reveal LFH-d2">' +
-      '<span class="LFH-hero-desc-desktop">Calce milimétrico para cada modelo y 100% impermeables. La alfombra que tu auto merece.</span>' +
-      '<span class="LFH-hero-desc-mobile">Alfombras a medida, 100% impermeables.</span>' +
+      '<span class="LFH-hero-desc-desktop LFH-hero-tagline">Protección premium para tu auto</span>' +
+      '<span class="LFH-hero-desc-mobile LFH-hero-tagline">Protección premium para tu auto</span>' +
       '</p>' +
       '<div class="LFH-hero-btns LFH-reveal LFH-d3">' +
       '<a href="/productos" class="LFH-btn-primary">VER PRODUCTOS</a>' +
@@ -213,7 +211,7 @@
       '<div class="LFH-ba-split-left">' +
       '<div class="LFH-sec-header">' +
       '<div class="LFH-gold-line LFH-reveal"></div>' +
-      '<h2 class="LFH-sec-title LFH-reveal LFH-d1">La diferencia es inmediata</h2>' +
+      '<h2 class="LFH-sec-title LFH-reveal LFH-d1">Mirá lo que es el cambio</h2>' +
       '<p class="LFH-sec-sub LFH-reveal LFH-d2">Arrasta el divisor para ver el cambio.</p>' +
       '</div>' +
       '<div class="LFH-reveal LFH-d3">' +
@@ -253,8 +251,8 @@
       '<div class="LFH-about-grid">' +
       '<div class="LFH-about-text LFH-reveal">' +
       '<div class="LFH-gold-line"></div>' +
-      '<h2 class="LFH-about-title">SOMOS FANATICOS DEL DETALLE</h2>' +
-      '<p class="LFH-about-desc">En Luxury Floor fabricamos alfombras a medida para cada modelo de auto. Tomamos las medidas exactas de cada vehículo y usamos materiales de uso profesional para ofrecerte el mejor ajuste, la mejor proteccion y el mejor resultado. Cada producto sale de nuestras manos con el estandar mas alto porque sabemos que tu auto se lo merece.</p>' +
+      '<h2 class="LFH-about-title">Somos un grupo que ama dar lo mejor de sí</h2>' +
+      '<div class="LFH-about-desc"><p>Traemos los mejores productos y buscamos encarar cada vez más modelos, para que cada uno tenga sus alfombras si las quiere.</p><p>Como se fabrican en China, nosotros nos encargamos de que te quedes tranquilo: buscamos lo mejor, te damos la mejor onda que tenemos y respondemos ante cualquier cosa que pase, para que siempre tengas nuestro respaldo.</p></div>' +
       '<a href="https://www.instagram.com/reels/DUa6HzajWKS/" id="LFH-know-us-btn" class="LFH-btn-secondary">' +
       'Conocenos <i class="fa-solid fa-arrow-right"></i>' +
       '</a>' +
@@ -448,7 +446,7 @@
 /* Luxury Floor: el "+1500 clientes satisfechos" del inicio lleva a los videos de clientes */
 (function () {
   var st = document.createElement('style');
-  st.textContent = 'a.LFH-badge{cursor:pointer;text-decoration:none;color:inherit}a.LFH-badge:hover{filter:brightness(1.15)}#LFSP-videos{scroll-margin-top:80px}';
+  st.textContent = '.LFH-hero-desc .LFH-hero-tagline{align-items:center;gap:12px;font-size:clamp(15px,1.55vw,20px)!important;font-weight:500;letter-spacing:.3px;color:#E6C978;line-height:1.3}.LFH-hero-desc .LFH-hero-tagline::before{content:"";width:28px;height:2px;flex:0 0 28px;border-radius:2px;background:linear-gradient(90deg,#C8A951,#A8873A)}.LFH-hero-desc-desktop.LFH-hero-tagline{display:flex}.LFH-hero-desc-mobile.LFH-hero-tagline{display:none}@media (max-width:768px){.LFH-hero-desc-desktop.LFH-hero-tagline{display:none}.LFH-hero-desc-mobile.LFH-hero-tagline{display:flex;font-size:15px!important}}.LFH-about-desc p{margin:0}.LFH-about-desc p+p{margin-top:14px!important}a.LFH-badge{cursor:pointer;text-decoration:none;color:inherit}a.LFH-badge:hover{filter:brightness(1.15)}#LFSP-videos{scroll-margin-top:80px}';
   document.head.appendChild(st);
   document.addEventListener('click', function (e) {
     var badge = e.target.closest && e.target.closest('.LFH-badge');
