@@ -780,13 +780,6 @@
            <div class="LFD-cta-transfer-price">${formatPrice(transferPrice)}</div>
            <div class="LFD-cta-transfer-sub">Transferencia o efectivo</div>
          </div>
-         <div class="LFD-cta-cuotas-row">
-           <div class="LFD-cta-cuotas-icon"><i class="fa-solid fa-credit-card"></i></div>
-           <div class="LFD-cta-cuotas-content">
-             <div class="LFD-cta-cuotas-label">Hasta 3 cuotas sin interés con tarjeta de Mercado Pago</div>
-             <div class="LFD-cta-cuotas-val" id="LFD-cta-cuotas-val">${formatPrice(price / 3)} c/u</div>
-           </div>
-         </div>
          <div class="LFD-cta-list-row">
            <span class="LFD-cta-list-label">Precio de lista:</span>
            <span class="LFD-cta-list-price">${formatPrice(price)}</span>
@@ -978,13 +971,6 @@
         <div class="LFD-cta-transfer-label"><i class="fa-solid fa-building-columns"></i> Precio de contado</div>
         <div class="LFD-cta-transfer-price">${formatPrice(transferPrice)}</div>
         <div class="LFD-cta-transfer-sub">Transferencia o efectivo</div>
-      </div>
-      <div class="LFD-cta-cuotas-row">
-        <div class="LFD-cta-cuotas-icon"><i class="fa-solid fa-credit-card"></i></div>
-        <div class="LFD-cta-cuotas-content">
-          <div class="LFD-cta-cuotas-label">Hasta 3 cuotas sin interés con tarjeta de Mercado Pago</div>
-          <div class="LFD-cta-cuotas-val">${formatPrice(price / 3)} c/u</div>
-        </div>
       </div>
       <div class="LFD-cta-list-row">
         <span class="LFD-cta-list-label">Precio de lista:</span>

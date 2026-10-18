@@ -17,6 +17,7 @@
     rating:      4.9,
     reviewCount: 127,
     cuotas:      3,
+    gocuotasCuotas: 0, // poner 2, 3 o 4 cuando se confirme en el panel de GOcuotas
     whatsappNumber: '5491132058419',
     whatsappText:   'Hola! Me interesa recibir atención personalizada sobre uno de sus productos.',
     transferDiscount: 0,
@@ -68,7 +69,7 @@
       { icon: 'fa-solid fa-ruler-combined', question: '¿Cómo garantizan el calce?',          answer: 'Usamos escaneo láser 3D de cada modelo de vehículo para lograr un ajuste milimétrico. Cada alfombra está diseñada exclusivamente para tu auto, no es genérica.' },
       { icon: 'fa-solid fa-droplet',        question: '¿Qué pasa si se derrama un líquido?', answer: 'La superficie 100% impermeable contiene el líquido sin filtrarse. Simplemente retirá la alfombra, volcá el líquido y limpiala con un paño húmedo.' },
       { icon: 'fa-solid fa-truck-fast',     question: '¿Cuánto demora el envío?',            answer: 'Enviamos a todo el país. CABA y GBA: 24 a 48hs. Interior: 3 a 5 días hábiles. Todos los envíos incluyen seguimiento en tiempo real.' },
-      { icon: 'fa-solid fa-credit-card',    question: '¿Puedo pagar en cuotas?',             answer: 'Sí. Hasta 3 cuotas sin interés con tarjeta de Mercado Pago. Por transferencia o en efectivo pagás el precio de contado.' }
+      { icon: 'fa-solid fa-credit-card',    question: '¿Puedo pagar en cuotas?',             answer: 'Sí. Con tarjeta de débito pagás en cuotas sin interés con GOcuotas. Con tarjeta de crédito pagás en cuotas con Mercado Pago: el interés lo ves antes de confirmar el pago. Por transferencia o en efectivo pagás el precio de contado.' }
     ],
 
     selectors: {
@@ -519,6 +520,20 @@
     `;
   }
 
+  /* Crédito: 3 cuotas según lo que informa Tienda Nube (Mercado Pago o Pago Nube).
+     Si tiene interés, se muestra el valor de la cuota y el total con interés. */
+  function creditVal(price) {
+    try {
+      var ve = document.querySelector('.js-product-container[data-variants]') || document.querySelector('[data-variants]');
+      var v = ve && JSON.parse(ve.getAttribute('data-variants'));
+      var d = v && v[0] && v[0].installments_data && JSON.parse(v[0].installments_data);
+      var p = d && (d['Mercado Pago'] || d['Pago Nube']);
+      var c = p && p[3];
+      if (c) return '3 × ' + formatPrice(c.installment_value) + (c.without_interests ? ' sin interés' : ' (total ' + formatPrice(c.total_value) + ')');
+    } catch (e) {}
+    return 'Ver opciones al pagar';
+  }
+
   function buildHTML() {
     const { price, originalPrice, discount } = getDynamicPrices();
     const productName = getProductName();
@@ -533,7 +548,8 @@
     ).join('');
 
     const transferVal = price > 0 ? formatPrice(transferPrice) : '—';
-    const cuotasVal   = price > 0 ? formatPrice(price / CONFIG.cuotas) + ' c/u' : '—';
+    const cuotasVal   = price > 0 ? creditVal(price) : '—';
+    const debitoVal   = (CONFIG.gocuotasCuotas > 1 && price > 0) ? CONFIG.gocuotasCuotas + ' × ' + formatPrice(price / CONFIG.gocuotasCuotas) : 'Sin interés';
 
     const priceRowInner = price > 0
       ? `<div class="LF-pb-main-icon"><i class="fa-solid fa-tag"></i></div>
@@ -624,7 +640,14 @@
           <div class="LF-pb-row LF-pb-row--cuotas">
             <div class="LF-pb-row-icon"><i class="fa-solid fa-credit-card"></i></div>
             <div class="LF-pb-row-content">
-              <div class="LF-pb-row-label">Hasta ${CONFIG.cuotas} cuotas sin interés con tarjeta de Mercado Pago</div>
+              <div class="LF-pb-row-label">Tarjeta de débito en cuotas sin interés · GOcuotas</div>
+              <div class="LF-pb-row-val" id="LF-pb-debito-val">${debitoVal}</div>
+            </div>
+          </div>
+          <div class="LF-pb-row LF-pb-row--cuotas">
+            <div class="LF-pb-row-icon"><i class="fa-regular fa-credit-card"></i></div>
+            <div class="LF-pb-row-content">
+              <div class="LF-pb-row-label">Tarjeta de crédito en cuotas · Mercado Pago</div>
               <div class="LF-pb-row-val" id="LF-pb-cuotas-val">${cuotasVal}</div>
             </div>
           </div>
@@ -776,7 +799,7 @@
 
     const cuotasEl = document.getElementById('LF-pb-cuotas-val');
     if (cuotasEl && cuotasEl.textContent === '—') {
-      cuotasEl.textContent = formatPrice(price / CONFIG.cuotas) + ' c/u';
+      cuotasEl.textContent = creditVal(price);
     }
     const transferEl = document.getElementById('LF-pb-transfer-val');
     if (transferEl && transferEl.textContent === '—') {

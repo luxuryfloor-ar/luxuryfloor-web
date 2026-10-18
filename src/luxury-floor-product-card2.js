@@ -378,7 +378,39 @@
     return null;
   }
 
-  /* ── CUOTAS ──────────────────────────────────────────────────── */
+  /* ── FORMAS DE PAGO EN CUOTAS ───────────────────────────────────
+     Débito: GOcuotas (siempre sin interés, lo cobra GOcuotas).
+     Crédito: lo que diga Tienda Nube para 3 cuotas de Mercado Pago
+     (si tiene interés muestra el valor con interés).
+     GOCUOTAS_CUOTAS: poner 2, 3 o 4 cuando se confirme en el panel de GOcuotas. */
+  var GOCUOTAS_CUOTAS = 0;
+
+  function getCreditInstallment(card) {
+    try {
+      var ve = card.querySelector('[data-variants]');
+      var v = ve && JSON.parse(ve.getAttribute('data-variants'));
+      var d = v && v[0] && v[0].installments_data && JSON.parse(v[0].installments_data);
+      var p = d && (d['Mercado Pago'] || d['Pago Nube']);
+      if (p && p[3]) return p[3];
+    } catch (e) {}
+    return null;
+  }
+
+  function getPayLinesHTML(card) {
+    var pe = card.querySelector('[data-product-price]');
+    var price = pe ? parseInt(pe.getAttribute('data-product-price') || '0', 10) / 100 : 0;
+    var deb = (GOCUOTAS_CUOTAS > 1 && price > 0)
+      ? 'Débito: ' + GOCUOTAS_CUOTAS + ' cuotas sin interés de <strong>' + formatARS(Math.round(price / GOCUOTAS_CUOTAS)) + '</strong>'
+      : 'Débito: cuotas sin interés con <strong>GOcuotas</strong>';
+    var cr = getCreditInstallment(card);
+    var cred = cr
+      ? 'Crédito: 3 cuotas de <strong>' + formatARS(cr.installment_value) + '</strong>' + (cr.without_interests ? ' sin interés' : '')
+      : 'Crédito: en cuotas con <strong>Mercado Pago</strong>';
+    return '<div class="LFC-t-installments"><i class="fa-solid fa-credit-card"></i>' + deb + '</div>' +
+           '<div class="LFC-t-installments"><i class="fa-regular fa-credit-card"></i>' + cred + '</div>';
+  }
+
+  /* ── CUOTAS (viejo, ya no se usa en pantalla) ───────────────── */
   function getInstallmentsText(card) {
     try {
       const variantsEl = card.querySelector('[data-variants]');
@@ -414,7 +446,7 @@
     const transferInfo = getTransferInfo(card);
     if (!transferInfo) return;
 
-    const installmentsText = getInstallmentsText(card);
+    const installmentsText = null;
 
     // Parsear cuotas para resaltar el monto
     let installmentsHTML = '';
@@ -452,7 +484,7 @@
         '<span class="LFC-t-price">' + transferInfo.text + '</span>' +
         (transferInfo.pct ? '<span class="LFC-t-badge">' + transferInfo.pct + '% OFF</span>' : '') +
       '</div>' +
-      installmentsHTML;
+      getPayLinesHTML(card);
   }
 
   /* ── ENHANCE ONE CARD ────────────────────────────────────────── */
@@ -483,7 +515,7 @@
       formatPrices(card);
       var b = card.querySelector('.LFC-transfer');
       if (!b) { clearInterval(ivl); return; }
-      if (!b.querySelector('.LFC-t-installments') && getInstallmentsText(card)) {
+      if (!b.querySelector('.LFC-t-installments')) {
         renderBanner(card);
       }
       if (++retries >= 6) clearInterval(ivl);

@@ -64,8 +64,8 @@
     var waHref = getWhatsAppHref();
 
     /* ── CONFIGURAR ESTAS URLs con las imágenes subidas al CDN ── */
-    var IMG_BANNER_DESKTOP = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@dc7945eb4eba3759e30e1f5c40dd5a796cf685e6/src/media/banner-desktop.jpg';
-    var IMG_BANNER_MOBILE  = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@dc7945eb4eba3759e30e1f5c40dd5a796cf685e6/src/media/banner-desktop.jpg';
+    var IMG_BANNER_DESKTOP = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@366a5e609046b56e1d686dace726a2091fcdfccf/src/media/banner-desktop.jpg';
+    var IMG_BANNER_MOBILE  = 'https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@366a5e609046b56e1d686dace726a2091fcdfccf/src/media/banner-desktop.jpg';
     /* ─────────────────────────────────────────────────────────── */
 
     var featCards = [

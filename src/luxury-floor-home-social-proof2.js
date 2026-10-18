@@ -399,8 +399,8 @@
                   <div class="LFSP-vstat-lbl">En el<br>mercado</div>
                 </div>
                 <div>
-                  <div class="LFSP-vstat-val">3 <em>cuotas</em></div>
-                  <div class="LFSP-vstat-lbl">Sin interés con<br>Mercado Pago</div>
+                  <div class="LFSP-vstat-val">Débito <em>en cuotas</em></div>
+                  <div class="LFSP-vstat-lbl">Sin interés con<br>GOcuotas</div>
                 </div>
               </div>
 
