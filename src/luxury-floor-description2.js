@@ -658,7 +658,7 @@
         <div class="LFD-inner">
           <div class="LFD-gold-line LFD-reveal"></div>
           <h2 class="LFD-sec-title LFD-reveal LFD-reveal-d1">Mirá lo que es el cambio</h2>
-          <p class="LFD-sec-sub LFD-reveal LFD-reveal-d2">Arrastrá el divisor para comparar el interior con y sin Luxury Floor.</p>
+          <p class="LFD-sec-sub LFD-reveal LFD-reveal-d2">Arrastrá el divisor para verlo.</p>
           <div class="LFD-reveal LFD-reveal-d3">
             <div class="LFD-ba-wrap">
               <div class="LFD-ba-container" id="LFD-ba">

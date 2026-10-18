@@ -212,7 +212,7 @@
       '<div class="LFH-sec-header">' +
       '<div class="LFH-gold-line LFH-reveal"></div>' +
       '<h2 class="LFH-sec-title LFH-reveal LFH-d1">Mirá lo que es el cambio</h2>' +
-      '<p class="LFH-sec-sub LFH-reveal LFH-d2">Arrasta el divisor para ver el cambio.</p>' +
+      '<p class="LFH-sec-sub LFH-reveal LFH-d2">Arrastrá el divisor para verlo.</p>' +
       '</div>' +
       '<div class="LFH-reveal LFH-d3">' +
       '<div class="LFH-ba-wrap">' +
