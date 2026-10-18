@@ -216,9 +216,8 @@
         margin-top: 6px;
         padding-top: 6px;
         border-top: 1px dashed #BBF7D0;
-        display: flex;
-        align-items: center;
-        gap: 5px;
+        display: block;
+        line-height: 1.35;
       }
       .LFC-t-installments i {
         font-size: 16px !important;
@@ -320,7 +319,7 @@
         .LFC-transfer { padding: 8px 10px 7px; }
 
         /* Ocultar solo el texto "Pagando con transferencia" pero dejar precio y badge */
-        .LFC-t-label-text { display: none !important; }
+        .LFC-t-label-text { font-size: 9px !important; }
         .LFC-t-header { margin-bottom: 3px; }
 
         .LFC-t-installments { font-size: 10px !important; }
@@ -400,11 +399,11 @@
     var pe = card.querySelector('[data-product-price]');
     var price = pe ? parseInt(pe.getAttribute('data-product-price') || '0', 10) / 100 : 0;
     var deb = (GOCUOTAS_CUOTAS > 1 && price > 0)
-      ? 'Débito: ' + GOCUOTAS_CUOTAS + ' cuotas sin interés de <strong>' + formatARS(Math.round(price / GOCUOTAS_CUOTAS)) + '</strong>'
+      ? 'Débito: ' + GOCUOTAS_CUOTAS + ' × <strong>' + formatARS(Math.round(price / GOCUOTAS_CUOTAS)) + '</strong> sin interés'
       : 'Débito: cuotas sin interés con <strong>GOcuotas</strong>';
     var cr = getCreditInstallment(card);
     var cred = cr
-      ? 'Crédito: 3 cuotas de <strong>' + formatARS(cr.installment_value) + '</strong>' + (cr.without_interests ? ' sin interés' : '')
+      ? 'Crédito: 3 × <strong>' + formatARS(cr.installment_value) + '</strong>' + (cr.without_interests ? ' sin interés' : '')
       : 'Crédito: en cuotas con <strong>Mercado Pago</strong>';
     return '<div class="LFC-t-installments"><i class="fa-solid fa-credit-card"></i>' + deb + '</div>' +
            '<div class="LFC-t-installments"><i class="fa-regular fa-credit-card"></i>' + cred + '</div>';
