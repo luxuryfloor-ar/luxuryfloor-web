@@ -10,14 +10,15 @@ Cada línea es un commit que se puede cargar en la tienda. La tienda usa el cód
 | 2026-10-18 | `a2e7f017da4dd05ddce6e7e5e046bb1476c346c2` | Formas de pago: débito en cuotas sin interés con GOcuotas; crédito muestra la cuota que informa Tienda Nube (con interés si corresponde); se saca la fila de cuotas del bloque final; banner "Cuotas sin interés con débito". Pago Nube pasado a cuotas con interés. Para mostrar cantidad de cuotas GOcuotas: `GOCUOTAS_CUOTAS` (tarjetas) y `gocuotasCuotas` (ficha) |
 | 2026-10-18 | `9a979f2b6c4ca391727c2311d9eb5560f25979a3` | Escena de capas (portada y ficha) con movimiento suave y texto del escaneo; sin "3D" ni "láser" en el resto de la web; 5% OFF por transferencia (Pago Nube); GOcuotas hasta 4 cuotas. Pago Nube: descuento transferencia 25%→5% y MODO apagado |
 | 2026-10-18 | `8191a8a2846b594d66fd90f260a0ee82e4c8d73c` | Portada: "Alfombras termoformadas" + bajada "Protección premium para tu auto", solo badge +1500; "Mirá lo que es el cambio"; nuevo texto de "Somos un grupo que ama dar lo mejor de sí"; imagen ilustrativa de capas arriba de la animación |
+| 2026-10-18 | `3175698b37a9a3e245a739df47d80cc8ae59b405` | Antes y después: "Arrastrá el divisor para verlo" (portada y ficha) |
 
 ## Código para Google Tag Manager (etiqueta HTML personalizada)
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@8191a8a2846b594d66fd90f260a0ee82e4c8d73c/src/luxury-floor-home10.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@8191a8a2846b594d66fd90f260a0ee82e4c8d73c/src/luxury-floor-home-social-proof2.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@8191a8a2846b594d66fd90f260a0ee82e4c8d73c/src/luxury-floor-product-card2.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@8191a8a2846b594d66fd90f260a0ee82e4c8d73c/src/luxury-floor-product-info2.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@8191a8a2846b594d66fd90f260a0ee82e4c8d73c/src/luxury-floor-description2.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@8191a8a2846b594d66fd90f260a0ee82e4c8d73c/src/luxury-floor-capas.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@3175698b37a9a3e245a739df47d80cc8ae59b405/src/luxury-floor-home10.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@3175698b37a9a3e245a739df47d80cc8ae59b405/src/luxury-floor-home-social-proof2.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@3175698b37a9a3e245a739df47d80cc8ae59b405/src/luxury-floor-product-card2.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@3175698b37a9a3e245a739df47d80cc8ae59b405/src/luxury-floor-product-info2.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@3175698b37a9a3e245a739df47d80cc8ae59b405/src/luxury-floor-description2.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/luxuryfloor-ar/luxuryfloor-web@3175698b37a9a3e245a739df47d80cc8ae59b405/src/luxury-floor-capas.js"></script>
 ```
