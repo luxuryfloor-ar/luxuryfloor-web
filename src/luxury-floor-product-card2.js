@@ -136,6 +136,11 @@
         text-decoration: line-through !important;
       }
 
+      /* Precio nativo oculto cuando ya está el bloque verde (evita precio repetido) */
+      .js-item-product .item-price-container:has(+ .LFC-transfer) {
+        display: none !important;
+      }
+
       /* Ocultar bloque nativo de transferencia e installments */
       .js-item-product .payment-discount-price-product-container {
         display: none !important;
