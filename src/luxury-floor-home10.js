@@ -253,7 +253,7 @@
       '<div class="LFH-gold-line"></div>' +
       '<h2 class="LFH-about-title">Somos un grupo que ama dar lo mejor de sí</h2>' +
       '<div class="LFH-about-desc"><p>Traemos los mejores productos y buscamos encarar cada vez más modelos, para que cada uno tenga sus alfombras si las quiere.</p><p>Como se fabrican en China, nosotros nos encargamos de que te quedes tranquilo: buscamos lo mejor, te damos la mejor onda que tenemos y respondemos ante cualquier cosa que pase, para que siempre tengas nuestro respaldo.</p></div>' +
-      '<a href="https://www.instagram.com/reels/DUa6HzajWKS/" id="LFH-know-us-btn" class="LFH-btn-secondary">' +
+      '<a href="https://www.instagram.com/reel/DZTShDbRsw9/" id="LFH-know-us-btn" class="LFH-btn-secondary">' +
       'Conocenos <i class="fa-solid fa-arrow-right"></i>' +
       '</a>' +
       '</div>' +
