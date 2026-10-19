@@ -191,6 +191,13 @@
         letter-spacing: -0.5px;
         line-height: 1;
       }
+      .LFC-free {
+        display: inline-flex; align-items: center; gap: 6px;
+        margin: 0 0 8px; padding: 4px 10px;
+        border-radius: 999px; background: #111827; color: #F5D98B !important;
+        font-size: 11px !important; font-weight: 800 !important; letter-spacing: .4px; text-transform: uppercase;
+      }
+      .LFC-free i { color: #F5D98B !important; font-size: 11px !important; display: inline-block !important; }
       .LFC-t-badge {
         display: inline-block;
         background: #16A34A;
@@ -469,7 +476,11 @@
       priceContainer.insertAdjacentElement('afterend', banner);
     }
 
+    var freeShip = [].some.call(card.querySelectorAll('.js-shipping-label-private:not(.js-free-shipping-minimum-label)'), function (el) {
+      return !el.classList.contains('hidden') && /gratis/i.test(el.textContent);
+    });
     banner.innerHTML =
+      (freeShip ? '<div class="LFC-free"><i class="fa-solid fa-truck-fast"></i> Envío gratis</div>' : '') +
       '<div class="LFC-t-header">' +
         '<i class="fa-solid fa-building-columns LFC-t-icon"></i>' +
         '<span class="LFC-t-label-text">Por transferencia</span>' +

@@ -365,6 +365,10 @@
       .LF-pb-row--cuotas .LF-pb-row-label { color: #777; }
       .LF-pb-row--transfer .LF-pb-row-label { color: #86efac; }
       .LF-pb-row-note { font-size: 12px; color: #9CA3AF; margin-top: 2px; }
+      .LF-pb-free { display: flex; align-items: center; gap: 12px; padding: 12px 16px; margin-bottom: 8px; border-radius: 14px; background: linear-gradient(135deg, #2A2110 0%, #1A1408 100%); border: 1px solid ${p}; }
+      .LF-pb-free i { color: ${p}; font-size: 20px; }
+      .LF-pb-free strong { display: block; color: #E6C978; font-size: 17px; font-weight: 800; letter-spacing: .2px; line-height: 1.1; text-transform: uppercase; }
+      .LF-pb-free span { color: #CFC6B4; font-size: 12px; }
       .LF-pb-row-val { font-size: 18px; font-weight: 800; line-height: 1.2; }
       .LF-pb-row--cuotas .LF-pb-row-val { color: ${td}; }
       .LF-pb-row--transfer .LF-pb-row-val { color: #4ade80; font-size: 34px; letter-spacing: -0.5px; }
@@ -535,6 +539,14 @@
     return 'Ver opciones al pagar';
   }
 
+  /* Envío gratis: Tienda Nube pone la etiqueta "Envío gratis" en los productos que lo tienen activado
+     (la de "superando $X" es otra y se ignora) */
+  function hasFreeShipping() {
+    return [].some.call(document.querySelectorAll('.js-shipping-label-private:not(.js-free-shipping-minimum-label)'), function (el) {
+      return !el.closest('.js-item-product') && !el.classList.contains('hidden') && /gratis/i.test(el.textContent);
+    });
+  }
+
   function buildHTML() {
     const { price, originalPrice, discount } = getDynamicPrices();
     const productName = getProductName();
@@ -631,6 +643,7 @@
         </div>
 
         <div class="LF-price-block" id="LF-price-block">
+          ${hasFreeShipping() ? `<div class="LF-pb-free"><i class="fa-solid fa-truck-fast"></i><div><strong>Envío gratis</strong><span>a todo el país</span></div></div>` : ''}
           <div class="LF-pb-row LF-pb-row--transfer">
             <div class="LF-pb-row-icon"><i class="fa-solid fa-building-columns"></i></div>
             <div class="LF-pb-row-content">
