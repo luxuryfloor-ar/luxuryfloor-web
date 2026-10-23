@@ -385,6 +385,8 @@
      (si tiene interés muestra el valor con interés).
      GOCUOTAS_CUOTAS: poner 2, 3 o 4 cuando se confirme en el panel de GOcuotas. */
   var GOCUOTAS_CUOTAS = 4;
+  /* Tarjeta de crédito de Mercado Pago: hasta 3 cuotas sin interés (promo activa desde oct 2026). Poner 0 para sacarlo. */
+  var MP_CARD_CUOTAS = 3;
 
   function getCreditInstallment(card) {
     try {
@@ -403,11 +405,15 @@
     var deb = (GOCUOTAS_CUOTAS > 1 && price > 0)
       ? 'Débito: hasta ' + GOCUOTAS_CUOTAS + ' × <strong>' + formatARS(Math.round(price / GOCUOTAS_CUOTAS)) + '</strong> sin interés'
       : 'Débito: cuotas sin interés con <strong>GOcuotas</strong>';
+    var mpCard = (MP_CARD_CUOTAS > 1 && price > 0)
+      ? 'Tarjeta Mercado Pago: hasta ' + MP_CARD_CUOTAS + ' × <strong>' + formatARS(Math.round(price / MP_CARD_CUOTAS)) + '</strong> sin interés'
+      : '';
     var cr = getCreditInstallment(card);
     var cred = cr
-      ? 'Crédito: 3 × <strong>' + formatARS(cr.installment_value) + '</strong>' + (cr.without_interests ? ' sin interés' : '')
+      ? (mpCard ? 'Otras tarjetas: ' : 'Crédito: ') + '3 × <strong>' + formatARS(cr.installment_value) + '</strong>' + (cr.without_interests ? ' sin interés' : '')
       : 'Crédito: en cuotas con <strong>Mercado Pago</strong>';
     return '<div class="LFC-t-installments"><i class="fa-solid fa-credit-card"></i>' + deb + '</div>' +
+           (mpCard ? '<div class="LFC-t-installments"><i class="fa-solid fa-credit-card"></i>' + mpCard + '</div>' : '') +
            '<div class="LFC-t-installments"><i class="fa-regular fa-credit-card"></i>' + cred + '</div>';
   }
 

@@ -17,6 +17,7 @@
     rating:      4.9,
     reviewCount: 127,
     cuotas:      3,
+    mpCardCuotas: 3, // Tarjeta de crédito Mercado Pago: hasta 3 cuotas sin interés (0 para sacarlo)
     gocuotasCuotas: 4, // GOcuotas permite hasta 4 cuotas con débito
     whatsappNumber: '5491132058419',
     whatsappText:   'Hola! Me interesa recibir atención personalizada sobre uno de sus productos.',
@@ -69,7 +70,7 @@
       { icon: 'fa-solid fa-ruler-combined', question: '¿Cómo garantizan el calce?',          answer: 'Cada alfombra se fabrica con las medidas exactas del piso de tu modelo. Está hecha exclusivamente para tu auto, no es genérica.' },
       { icon: 'fa-solid fa-droplet',        question: '¿Qué pasa si se derrama un líquido?', answer: 'La superficie 100% impermeable contiene el líquido sin filtrarse. Simplemente retirá la alfombra, volcá el líquido y limpiala con un paño húmedo.' },
       { icon: 'fa-solid fa-truck-fast',     question: '¿Cuánto demora el envío?',            answer: 'Enviamos a todo el país. CABA y GBA: 24 a 48hs. Interior: 3 a 5 días hábiles. Todos los envíos incluyen seguimiento en tiempo real.' },
-      { icon: 'fa-solid fa-credit-card',    question: '¿Puedo pagar en cuotas?',             answer: 'Sí. Con tarjeta de débito pagás hasta 4 cuotas sin interés con GOcuotas. Con tarjeta de crédito pagás en cuotas: el interés lo ves antes de confirmar el pago. Si pagás por transferencia tenés 5% de descuento.' }
+      { icon: 'fa-solid fa-credit-card',    question: '¿Puedo pagar en cuotas?',             answer: 'Sí. Con tarjeta de débito pagás hasta 4 cuotas sin interés con GOcuotas. Con la tarjeta de crédito de Mercado Pago pagás hasta 3 cuotas sin interés. Con otras tarjetas de crédito pagás en cuotas: el interés lo ves antes de confirmar el pago. Si pagás por transferencia tenés 5% de descuento.' }
     ],
 
     selectors: {
@@ -659,10 +660,17 @@
               <div class="LF-pb-row-val" id="LF-pb-debito-val">${debitoVal}</div>
             </div>
           </div>
+          ${CONFIG.mpCardCuotas > 1 && price > 0 ? `<div class="LF-pb-row LF-pb-row--cuotas">
+            <div class="LF-pb-row-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div class="LF-pb-row-content">
+              <div class="LF-pb-row-label">Tarjeta de crédito Mercado Pago · sin interés</div>
+              <div class="LF-pb-row-val">Hasta ${CONFIG.mpCardCuotas} × ${formatPrice(price / CONFIG.mpCardCuotas)} sin interés</div>
+            </div>
+          </div>` : ''}
           <div class="LF-pb-row LF-pb-row--cuotas">
             <div class="LF-pb-row-icon"><i class="fa-regular fa-credit-card"></i></div>
             <div class="LF-pb-row-content">
-              <div class="LF-pb-row-label">Tarjeta de crédito en cuotas · Mercado Pago</div>
+              <div class="LF-pb-row-label">${CONFIG.mpCardCuotas > 1 ? 'Otras tarjetas de crédito en cuotas' : 'Tarjeta de crédito en cuotas · Mercado Pago'}</div>
               <div class="LF-pb-row-val" id="LF-pb-cuotas-val">${cuotasVal}</div>
             </div>
           </div>
